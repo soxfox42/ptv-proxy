@@ -38,7 +38,11 @@ func main() {
 		token := r.FormValue("token")
 		searchTerm := r.FormValue("searchTerm")
 
-		if token == "" || searchTerm == "" {
+		if token == "" {
+			w.WriteHeader(http.StatusForbidden)
+			return
+		}
+		if searchTerm == "" {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
@@ -64,7 +68,11 @@ func main() {
 		routeType := r.FormValue("routeType")
 		stopID := r.FormValue("stopID")
 
-		if token == "" || routeType == "" || stopID == "" {
+		if token == "" {
+			w.WriteHeader(http.StatusForbidden)
+			return
+		}
+		if routeType == "" || stopID == "" {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
