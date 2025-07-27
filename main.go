@@ -15,7 +15,7 @@ import (
 func makeToken() string {
 	bytes := make([]byte, 24)
 	rand.Read(bytes)
-	return base64.StdEncoding.EncodeToString(bytes)
+	return base64.URLEncoding.EncodeToString(bytes)
 }
 
 type SearchResult struct {
